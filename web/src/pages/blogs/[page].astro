@@ -63,6 +63,7 @@ const TITLE: string = 'ブログ記事一覧';
             ))
           }
         </div>
+        <Pagination currentPage={Number(page.url.current.replace('/blogs/', ''))} finalPage={page.lastPage} />
         )
         : (
           <div class="p-4 grid place-items-center cursor-default">
@@ -70,6 +71,5 @@ const TITLE: string = 'ブログ記事一覧';
           </div>
         )
     }
-    <Pagination currentPage={Number(page.url.current.replace('/blogs/', ''))} finalPage={page.lastPage} />
   </section>
 </Layout>
