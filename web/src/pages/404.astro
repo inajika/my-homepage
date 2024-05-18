@@ -1,0 +1,18 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+---
+
+<Layout title="お探しのページが見つかりません" desctiption="お探しのページが見つかりません">
+  <section class="grid grid-flow-row grid-rows-[auto_1fr]">
+    <Breadcrumbs currentPageName="About Me" />
+    <div class="grid place-items-center">
+      <p class="text-xl md:text-3xl">
+        お探しのページが見つかりません。
+        <br>
+        URLをもう一度ご確認ください。
+      </p>
+      <a href="/" role="button" class="btn btn-outline btn-wide m-auto">トップページ</a>
+    </div>
+  </section>
+</Layout>
