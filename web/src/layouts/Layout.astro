@@ -16,11 +16,7 @@ const { title, desctiption } = Astro.props;
 <html lang="ja">
 	<head>
 		<meta charset="UTF-8" />
-		{
-			desctiption&&(
-				<meta name="description" content={desctiption} />
-			)
-		}
+		<meta name="description" content={desctiption ? desctiption : 'イナジカのホームページです。'} />
 		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
 		<link rel="icon" href="/favicon.ico" />
 		<title>{title ? `${title} - イナジカ.com` : 'イナジカ.com'}</title>

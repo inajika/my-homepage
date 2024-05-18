@@ -1,0 +1,75 @@
+---
+import type { GetStaticPathsOptions } from 'astro';
+
+import MainDeer from '@/assets/MainDeer.jpeg';
+import type { BlogEntry } from '@/lib/contentful';
+import { contentfulClient } from '@/lib/contentful';
+import Layout from '@/layouts/Layout.astro';
+import BlogCard from '@/components/BlogCard.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import Pagination from '@/components/Pagination.astro';
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const blogEntries = await contentfulClient.getEntries<BlogEntry>({
+    content_type: 'blog_entries',
+    order: 'sys.publishedAt',
+  });
+
+  const pages = blogEntries.items.map(item => {
+    const { entry_id, entry_title, eyecatch } = item.fields;
+    return {
+      entry_id,
+      entry_title,
+      eyecatch
+    }
+  });
+
+  return paginate(pages, { pageSize: 8 });
+}
+
+const { page } = Astro.props;
+
+/** ページタイトル */
+const TITLE: string = 'ブログ記事一覧';
+---
+
+<Layout title={TITLE}>
+  <section class="grid grid-flow-row grid-rows-[auto_1fr_auto]">
+    <Breadcrumbs currentPageName={TITLE} />
+    {
+      page.data
+        ? (
+        <div class="p-4 grid row-span-8 md:grid-rows-2 md:grid-cols-4 gap-4">
+          {
+            page.data.map(item => (
+              <BlogCard
+                entryId={item.entry_id}
+                entryTitle={item.entry_title}
+                eyecatch={
+                  item.eyecatch
+                    ? {
+                      src: item.eyecatch.fields.file.url,
+                      alt: item.eyecatch.fields.desctiption
+                        ? item.eyecatch.fields.description
+                        : item.eyecatch.fields.title
+                          ? item.eyecatch.fields.title
+                          : 'アイキャッチ'
+                    }
+                    : {
+                      src: MainDeer.src,
+                      alt: 'イナジカ.com'
+                    }
+                } />
+            ))
+          }
+        </div>
+        )
+        : (
+          <div class="p-4 grid place-items-center cursor-default">
+            <p class="text-2xl font-bold">ブログ記事がありません。</p>
+          </div>
+        )
+    }
+    <Pagination currentPage={page.url.current} finalPage={page.lastPage} />
+  </section>
+</Layout>

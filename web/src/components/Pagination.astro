@@ -1,0 +1,20 @@
+---
+interface Props {
+  /** 現在のページ番号 */
+  currentPage: number,
+  /** 最後のページ番号 */
+  finalPage: number,
+};
+
+const { currentPage, finalPage } = Astro.props;
+---
+
+<div class="join m-auto">
+  {
+    Array(finalPage).fill(0).map((item, idx) => {
+      return currentPage === (idx + 1)
+        ? (<button class="join-item btn btn-active">{idx + 1}</button>)
+        : (<a href={`/blogs/${idx + 1}`} role="button" class="join-item btn">{idx + 1}</a>)
+    })
+  }
+</div>

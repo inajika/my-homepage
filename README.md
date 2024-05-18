@@ -10,6 +10,12 @@
   - 実行環境
     - 本番環境→`production`
     - 開発環境→`development`
+- `CONTENTFUL_SPACE_ID`
+  - ContentfulのスペースID
+- `CONTENTFUL_TOKEN`
+  - ContentfulのAPIトークン
+    - 本番環境→Content Delivery APIのトークン
+    - 開発環境→Content Preview APIのトークン
 
 ## アイコン
 - [heroicons](https://github.com/tailwindlabs/heroicons)
