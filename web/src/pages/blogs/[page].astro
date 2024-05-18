@@ -13,7 +13,7 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const blogEntries = await contentfulClient.getEntries<BlogEntry>({
     content_type: 'blog_entries',
     order: 'sys.publishedAt',
-  });
+  } as any);
 
   const pages = blogEntries.items.map(item => {
     const { entry_id, entry_title, eyecatch } = item.fields;
@@ -48,11 +48,11 @@ const TITLE: string = 'ブログ記事一覧';
                 eyecatch={
                   item.eyecatch
                     ? {
-                      src: item.eyecatch.fields.file.url,
-                      alt: item.eyecatch.fields.desctiption
-                        ? item.eyecatch.fields.description
-                        : item.eyecatch.fields.title
-                          ? item.eyecatch.fields.title
+                      src: (item.eyecatch as any).fields.file.url,
+                      alt: (item.eyecatch as any).fields.desctiption
+                        ? (item.eyecatch as any).fields.description
+                        : (item.eyecatch as any).fields.title
+                          ? (item.eyecatch as any).fields.title
                           : 'アイキャッチ'
                     }
                     : {
@@ -70,6 +70,6 @@ const TITLE: string = 'ブログ記事一覧';
           </div>
         )
     }
-    <Pagination currentPage={page.url.current} finalPage={page.lastPage} />
+    <Pagination currentPage={Number(page.url.current.replace('/blogs/', ''))} finalPage={page.lastPage} />
   </section>
 </Layout>

@@ -1,4 +1,4 @@
-import type { Asset, EntryFieldTypes } from 'contentful';
+import type { EntryFieldTypes } from 'contentful';
 import contentful from 'contentful';
 
 /**

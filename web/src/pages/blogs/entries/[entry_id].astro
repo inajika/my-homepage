@@ -22,7 +22,7 @@ export async function getStaticPaths() {
       /** 記事本文 */
       entryBody: documentToHtmlString(item.fields['entry_body'], renderImageOption),
       /** アイキャッチ画像 */
-      eyecatch: item.fields['eyecatch'],
+      eyecatch: item.fields['eyecatch'] as any,
     },
   }));
 
