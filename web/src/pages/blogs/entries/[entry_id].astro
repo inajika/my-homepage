@@ -26,7 +26,7 @@ export async function getStaticPaths() {
       /** 記事の概要 */
       description: item.fields['description'],
       /** 公開日(ドラフト版の場合は更新日時) */
-      publishedAt: (item as any).sys['publishedAt'] ? new Date((item as any).sys['publishedAt']) : new Date(item.sys['updatedAt']),
+      publishedAt: (item as any).sys['publishedAt'] ? new Date((item as any).sys['publishedAt']) : new Date(item.sys['createdAt']),
       /** ロケール */
       locale: item.sys['locale'] ? item.sys['locale'] : 'ja-JP',
     },
