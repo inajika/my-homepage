@@ -1,5 +1,19 @@
-# my-homepage
-ホームページ
+# イナジカ.com
+[イナジカ.com](https://inajika.com)のソースコード
+
+## 開発環境
+- Docker
+- VSCode
+  - Dev Containersを利用しています。
+
+## 技術スタック
+このサイトは、JAMStackで構築しています。
+- ヘッドレスCMS
+  - Contentful
+- 静的サイトジェネレータ
+  - Astro (TypeScript)
+- ホスティング
+  - Cloudflare Pages
 
 ## 環境変数
 `.env.sample`をコピーして`.env`を同じディレクトリに作成します。
