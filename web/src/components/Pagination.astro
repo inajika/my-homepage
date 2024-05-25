@@ -13,8 +13,8 @@ const { currentPage, finalPage } = Astro.props;
   {
     Array(finalPage).fill(0).map((item, idx) => {
       return currentPage === (idx + 1)
-        ? (<button class="join-item btn btn-active">{idx + 1}</button>)
-        : (<a href={`/blogs/${idx + 1}`} role="button" class="join-item btn">{idx + 1}</a>)
+        ? (<button class="join-item btn md:btn-sm btn-active">{idx + 1}</button>)
+        : (<a href={`/blogs/${idx + 1}`} role="button" class="join-item btn md:btn-sm">{idx + 1}</a>)
     })
   }
 </div>

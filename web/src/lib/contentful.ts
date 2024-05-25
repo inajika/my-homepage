@@ -28,6 +28,8 @@ export interface BlogEntry {
     entry_body: EntryFieldTypes.RichText,
     /** アイキャッチ画像 */
     eyecatch: EntryFieldTypes.AssetLink,
+    /** 記事の概要(短いテキスト) */
+    description: EntryFieldTypes.Text,
   },
 };
 

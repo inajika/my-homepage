@@ -23,30 +23,45 @@ export async function getStaticPaths() {
       entryBody: documentToHtmlString(item.fields['entry_body'], renderImageOption),
       /** アイキャッチ画像 */
       eyecatch: item.fields['eyecatch'] as any,
+      /** 記事の概要 */
+      description: item.fields['description'],
+      /** 公開日(ドラフト版の場合は更新日時) */
+      publishedAt: (item as any).sys['publishedAt'] ? new Date((item as any).sys['publishedAt']) : new Date(item.sys['updatedAt']),
+      /** ロケール */
+      locale: item.sys['locale'] ? item.sys['locale'] : 'ja-JP',
     },
   }));
 
   return pages;
 };
 
-const { entryTitle, entryBody, eyecatch } = Astro.props;
+const { entryTitle, entryBody, eyecatch, description, publishedAt, locale } = Astro.props;
 ---
 
-<Layout title={entryTitle}>
-  <section class="grid grid-flow-row grid-rows-[auto_1fr]">
+<Layout title={entryTitle} desctiption={description}>
+  <section class=`grid grid-flow-row grid-rows-${eyecatch ? '[auto_auto_auto_auto_1fr]' : '[auto_auto_auto_1fr]'}`>{/* アイキャッチがない場合、DOMの数が一つ少ない */}
     <Breadcrumbs currentPageName={entryTitle} paths={[{pageName: 'ブログ記事一覧', relativePath: '/blogs/1'}]} />
     {
       eyecatch&&(
-        <img src={eyecatch.fields.file.url} alt={
-          eyecatch.fields.desctiption
-          ? eyecatch.fields.description
-          : eyecatch.fields.title
-            ? eyecatch.fields.title
-            : "アイキャッチ"
-        } class="md:w-1/2 m-auto" />
+        <div class="mb-4">
+          <img src={eyecatch.fields.file.url} alt={
+            eyecatch.fields.desctiption
+            ? eyecatch.fields.description
+            : eyecatch.fields.title
+              ? eyecatch.fields.title
+              : "アイキャッチ"
+            }
+            width={eyecatch.fields.file.details.image.width} />
+        </div>
       )
     }
-    <article set:html={entryBody} class="blog_entry" />
+    <h1 class="entry_title px-2 md:px-8">{entryTitle}</h1>{/* 記事のタイトル */}
+    <p class="px-2 md:px-8 text-neutral-600">
+      {/* 公開日 */}
+      公開日:&nbsp;
+      <time datetime={publishedAt.toISOString()} itemprop="entryPublished">{publishedAt.toLocaleDateString(locale)}</time>
+    </p>
+    <article set:html={entryBody} class="blog_entry" />{/* ブログ記事 */}
   </section>
 </Layout>
 
@@ -55,7 +70,8 @@ const { entryTitle, entryBody, eyecatch } = Astro.props;
   .blog_entry {
     @apply px-2 md:px-8
   }
-  /* ブログ記事 - 見出し1 */
+  /* ブログ記事タイトル、ブログ記事 - 見出し1 */
+  .entry_title,
   .blog_entry h1 {
     @apply text-5xl font-extrabold mt-2 mb-4
   }
@@ -78,6 +94,10 @@ const { entryTitle, entryBody, eyecatch } = Astro.props;
   /* ブログ記事 - 見出し6 */
   .blog_entry h6 {
     @apply text-lg font-extrabold
+  }
+  /* ブログ記事 - 段落 */
+  .blog_entry p {
+    @apply my-2
   }
   /* ブログ記事 - 順序なしリスト */
   .blog_entry ul {
