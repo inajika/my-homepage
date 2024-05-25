@@ -39,7 +39,7 @@ const { entryTitle, entryBody, eyecatch, description, publishedAt, locale } = As
 ---
 
 <Layout title={entryTitle} desctiption={description}>
-  <section class=`grid grid-flow-row grid-rows-${eyecatch ? '[auto_auto_auto_auto_1fr]' : '[auto_auto_auto_1fr]'}`>{/* アイキャッチがない場合、DOMの数が一つ少ない */}
+  <section class=`grid grid-flow-row ${eyecatch ? 'grid-rows-[auto_auto_auto_auto_1fr]' : 'grid-rows-[auto_auto_auto_1fr]'}`>{/* アイキャッチがない場合、DOMの数が一つ少ない */}
     <Breadcrumbs currentPageName={entryTitle} paths={[{pageName: 'ブログ記事一覧', relativePath: '/blogs/1'}]} />
     {
       eyecatch&&(
