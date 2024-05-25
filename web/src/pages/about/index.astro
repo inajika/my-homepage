@@ -5,11 +5,14 @@ import Layout from '@/layouts/Layout.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 
 import MainDeer from '@/assets/MainDeer.jpeg';
+
+/** ページタイトル */
+const TITLE: string = 'About Me';
 ---
 
-<Layout title='About Me' desctiption='イナジカの自己紹介です。'>
+<Layout title={TITLE} desctiption='イナジカの自己紹介です。'>
   <section class="grid grid-flow-row grid-rows-[auto_1fr]">
-    <Breadcrumbs currentPageName="About Me" />
+    <Breadcrumbs currentPageName={TITLE} />
     <div class="grid max-md:grid-rows-2 md:grid-cols-[48%_1fr] md:place-items-center">
       <Image src={MainDeer} alt="イナジカ" class="mask mask-circle"></Image>
       <div class="max-md:mx-12 max-md:py-8">

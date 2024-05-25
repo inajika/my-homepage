@@ -1,0 +1,76 @@
+---
+import type { GetStaticPathsOptions } from 'astro';
+
+import type { BlogEntry } from '@/lib/contentful';
+import { contentfulClient } from '@/lib/contentful';
+import Layout from '@/layouts/Layout.astro';
+import BlogCard from '@/components/BlogCard.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import Pagination from '@/components/Pagination.astro';
+
+/**
+ * ブログ記事の一覧をContentful APIから取得
+ */
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const blogEntries = await contentfulClient.getEntries<BlogEntry>({
+    content_type: 'blog_entries',
+    order: import.meta.env.NODE_ENV === 'production' ? 'sys.publishedAt' : 'sys.updatedAt',
+  } as any);
+
+  const pages = blogEntries.items.map(item => {
+    const { entry_id, entry_title, eyecatch } = item.fields;
+    const publishedAt = (item.sys as any)['publishedAt'] ? new Date((item.sys as any)['publishedAt']) : new Date(item.sys['updatedAt']);
+    const locale = item.sys['locale'] ? item.sys['locale'] : 'ja-JP';
+    return {
+      entry_id,
+      entry_title,
+      eyecatch,
+      publishedAt,
+      locale,
+    }
+  });
+
+  return paginate(pages, { pageSize: 8 });
+}
+
+const { page } = Astro.props;
+
+/** ページタイトル */
+const TITLE: string = 'ブログ記事一覧';
+---
+
+<Layout title={TITLE} desctiption="ブログ記事の一覧です。">
+  <section class="grid grid-flow-row grid-rows-[auto_1fr_auto]">
+    <Breadcrumbs currentPageName={TITLE} />
+    {
+      page.data.length
+        ? (
+        <div class="p-4 grid row-span-8 md:grid-rows-2 md:grid-cols-4 gap-4 md:gap-2">
+          {
+            page.data.map(item => (
+              <BlogCard
+                entryId={item.entry_id}
+                entryTitle={item.entry_title}
+                eyecatch={
+                  item.eyecatch
+                  ? {
+                    src: (item.eyecatch as any).fields.file.url,
+                    alt: item.entry_title
+                  }
+                  : undefined
+                }
+                publishedAt={item.publishedAt}
+                locale={item.locale} />
+            ))
+          }
+        </div>
+        <Pagination currentPage={Number(page.url.current.replace('/blogs/', ''))} finalPage={page.lastPage} />
+        )
+        : (
+          <div class="p-4 grid place-items-center cursor-default">
+            <p class="text-2xl font-bold">ブログ記事がありません。</p>
+          </div>
+        )
+    }
+  </section>
+</Layout>

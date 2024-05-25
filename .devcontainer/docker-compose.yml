@@ -1,0 +1,15 @@
+services:
+  astro-web:
+    build:
+      context: ../web
+      dockerfile: Dockerfile
+    environment:
+      - TZ=Asia/Tokyo
+      - NODE_ENV=${NODE_ENV}
+      - CONTENTFUL_SPACE_ID=${CONTENTFUL_SPACE_ID}
+      - CONTENTFUL_TOKEN=${CONTENTFUL_TOKEN}
+    ports:
+      - 4321:4321
+    volumes:
+      - ../web:/web
+    command: /bin/sh -c "while sleep 1000; do :; done"

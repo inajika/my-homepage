@@ -1,0 +1,40 @@
+---
+interface Props {
+  /** ブログ記事ID */
+  entryId: number,
+  /** ブログ記事タイトル */
+  entryTitle: string,
+  /** アイキャッチ */
+  eyecatch?: {
+    /** アイキャッチ画像ソースURL */
+    src: string,
+    /** アイキャッチ画像代替テキスト */
+    alt: string
+  },
+  /** 公開日 */
+  publishedAt: Date,
+  /** ロケール */
+  locale?: string,
+};
+
+const { entryId, entryTitle, eyecatch, publishedAt, locale = 'ja-JP' } = Astro.props;
+---
+
+<a href={`/blogs/entries/${entryId}`} class="card image-full card-compact max-md:min-h-40 shadow-md shadow-slate-500 hover:shadow-xl hover:shadow-slate-400 duration-200 bg-base-100">
+  {
+    eyecatch&&(
+      <figure>
+        <img src={eyecatch.src} alt={eyecatch.alt} class="" />
+      </figure>
+    )
+  }
+  <div class="card-body grid place-items-center">
+    <div class="md:w-4/5 m-auto">
+      <h2 class="text-lg font-bold text-center">{entryTitle}</h2>
+      <p class="text-center mt-2">
+        公開日:&nbsp;
+        <time datetime={publishedAt.toISOString()} itemprop="entryPublished">{publishedAt.toLocaleDateString(locale)}</time>
+      </p>
+    </div>
+  </div>
+</a>
