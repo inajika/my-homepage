@@ -1,7 +1,7 @@
 services:
   astro-web:
     build:
-      context: .devcontainer/
+      context: ../web
       dockerfile: Dockerfile
     environment:
       - TZ=Asia/Tokyo
@@ -11,5 +11,5 @@ services:
     ports:
       - 4321:4321
     volumes:
-      - ./web:/web
+      - ../web:/web
     command: /bin/sh -c "while sleep 1000; do :; done"
