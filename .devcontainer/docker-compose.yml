@@ -1,8 +1,8 @@
 services:
   astro-web:
     build:
-      context: ../web
-      dockerfile: Dockerfile
+      context: ..
+      dockerfile: ./.devcontainer/docker/Dockerfile
     environment:
       - TZ=Asia/Tokyo
       - NODE_ENV=${NODE_ENV}
