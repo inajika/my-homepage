@@ -2,11 +2,11 @@ FROM node:20.13.1-bookworm
 
 WORKDIR /web
 
-RUN apt-get update \
-  && apt-get upgrade \
+RUN apt-get -y update \
+  && apt-get -y upgrade \
   && npm install -g npm@latest
 
-COPY . .
+COPY ./web/ .
 
 RUN npm install
 
