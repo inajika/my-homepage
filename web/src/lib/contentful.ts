@@ -1,10 +1,10 @@
 import type { EntryFieldTypes } from 'contentful';
-import contentful from 'contentful';
+import { createClient } from 'contentful';
 
 /**
  * ContentfulAPIのクライアント
  */
-export const contentfulClient = contentful.createClient({
+export const contentfulClient = createClient({
   space: import.meta.env.CONTENTFUL_SPACE_ID,
   accessToken: import.meta.env.CONTENTFUL_TOKEN,
   host: import.meta.env.NODE_ENV === 'production'
