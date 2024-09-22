@@ -1,4 +1,4 @@
-FROM node:20.13.1-bookworm
+FROM node:22.9.0-slim
 
 # コンテナの日本語化
 ENV LANG=C.UTF-8
@@ -7,7 +7,7 @@ ENV LANGUAGE=en_US:
 RUN apt-get -y update \
   && apt-get -y upgrade \
   && apt-get install -y sudo git vim \
-  && npm install -g npm@latest
+  && npm install -g npm@latest npm-check-updates
 
 # ユーザ追加
 ## ユーザ名
