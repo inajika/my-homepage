@@ -31,6 +31,11 @@
     - 本番環境→Content Delivery APIのトークン
     - 開発環境→Content Preview APIのトークン
 
+# ローカル開発環境でのアプリ起動コマンド
+```bash
+$ npm --prefix ./web run dev
+```
+
 ## アイコン
 - [heroicons](https://github.com/tailwindlabs/heroicons)
 - [Font Awesome](https://fontawesome.com/)
