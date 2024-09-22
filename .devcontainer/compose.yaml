@@ -2,9 +2,10 @@ services:
   astro-web:
     build:
       context: ..
-      dockerfile: ./.devcontainer/docker/Dockerfile
+      dockerfile: ./.devcontainer/docker/web/Dockerfile
       args:
         - PASSWORD=${PASSWORD}
+    tty: true
     environment:
       - TZ=Asia/Tokyo
       - NODE_ENV=${NODE_ENV}
@@ -14,4 +15,3 @@ services:
       - 4321:4321
     volumes:
       - ../:/service
-    command: /bin/sh -c "while sleep 1000; do :; done"

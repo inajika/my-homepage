@@ -20,7 +20,7 @@ updates:
     rebase-strategy: "auto"
   # for Dockerfile
   - package-ecosystem: "docker"
-    directory: "/.devcontainer/docker/"                   # `Dockerfile` の場所
+    directory: "/.devcontainer/docker/web/"                   # `Dockerfile` の場所
     schedule:
       interval: "weekly"                                  # チェック頻度を週次に設定
     target-branch: "develop"                              # マージ先のブランチを `develop` に指定
