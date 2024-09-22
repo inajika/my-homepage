@@ -2,6 +2,7 @@ FROM node:20.13.1-bookworm
 
 RUN apt-get -y update \
   && apt-get -y upgrade \
+  && apt-get install -y sudo git vim \
   && npm install -g npm@latest
 
 # ユーザ追加
