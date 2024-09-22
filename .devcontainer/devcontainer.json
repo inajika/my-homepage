@@ -1,7 +1,8 @@
 {
-  "dockerComposeFile": "./docker-compose.yml",
+  "name": "my-homepage",
+  "dockerComposeFile": "./compose.yaml",
   "service": "astro-web",
-  "workspaceFolder": "/web",
+  "workspaceFolder": "/service",
   "shutdownAction": "none",
 	"postCreateCommand": "npm install",
   "customizations": {
