@@ -1,0 +1,32 @@
+version: 2
+updates:
+  # for Python
+  - package-ecosystem: "npm"
+    directory: "/web/"                                    # `package.json` の場所
+    schedule:
+      interval: "weekly"                                  # チェック頻度を週次に設定
+    target-branch: "develop"                              # マージ先のブランチを `develop` に指定
+    allow:                                                # 依存関係のチェックを許可するパッケージ
+      - dependency-name: "astro"
+      - dependency-name: "contentful"
+      - dependency-name: "daisyui"
+      - dependency-name: "tailwindcss"
+      - dependency-name: "typescript"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]     # パッチバージョンの更新は無視
+    commit-message:
+      prefix: "chore"
+    rebase-strategy: "auto"
+  # for Dockerfile
+  - package-ecosystem: "docker"
+    directory: "/.devcontainer/docker/"                   # `Dockerfile` の場所
+    schedule:
+      interval: "weekly"                                  # チェック頻度を週次に設定
+    target-branch: "develop"                              # マージ先のブランチを `develop` に指定
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]     # パッチバージョンの更新は無視
+    commit-message:
+      prefix: "chore"
+    rebase-strategy: "auto"
