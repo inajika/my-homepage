@@ -1,15 +1,20 @@
 {
-  "dockerComposeFile": "./docker-compose.yml",
+  "name": "my-homepage",
+  "dockerComposeFile": "./compose.yaml",
   "service": "astro-web",
-  "workspaceFolder": "/web",
+  "workspaceFolder": "/service",
   "shutdownAction": "none",
-	"postCreateCommand": "npm install",
+	"postCreateCommand": "npm --prefix ./web install ./web",
+  "postStartCommand": "git config --global --add safe.directory /service && git config --global core.editor vim",
   "customizations": {
     "vscode": {
       "extensions": [
+        "ms-ceintl.vscode-language-pack-ja",
         "astro-build.astro-vscode",
         "bradlc.vscode-tailwindcss",
-        "emranweb.daisyui-snippet"
+        "emranweb.daisyui-snippet",
+        "mhutchie.git-graph",
+        "ms-azuretools.vscode-docker"
       ]
     }
   }

@@ -3,6 +3,8 @@ services:
     build:
       context: ..
       dockerfile: ./.devcontainer/docker/Dockerfile
+      args:
+        - PASSWORD=${PASSWORD}
     environment:
       - TZ=Asia/Tokyo
       - NODE_ENV=${NODE_ENV}
@@ -11,5 +13,5 @@ services:
     ports:
       - 4321:4321
     volumes:
-      - ../web:/web
+      - ../:/service
     command: /bin/sh -c "while sleep 1000; do :; done"
