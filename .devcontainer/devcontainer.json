@@ -3,13 +3,13 @@
   "dockerComposeFile": "./compose.yaml",
   "service": "astro-web",
   "workspaceFolder": "/service",
-	"postCreateCommand": "npm --prefix ./web install ./web",
+	"postCreateCommand": "npm install",
   "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && git config --global core.editor vim",
   "customizations": {
     "vscode": {
       "settings": {
         "editor.tabSize": 2,
-        "biome.lspBin": "web/node_modules/@biomejs/biome/bin/biome",
+        "biome.lspBin": "node_modules/@biomejs/biome/bin/biome",
         "[javascript][javascriptreact][typescript][typescriptreact][astro]": {
           "editor.defaultFormatter": "biomejs.biome",
           "editor.codeActionsOnSave": {
