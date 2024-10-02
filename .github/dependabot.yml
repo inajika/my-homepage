@@ -2,7 +2,7 @@ version: 2
 updates:
   # for Python
   - package-ecosystem: "npm"
-    directory: "/web/"                                    # `package.json` の場所
+    directory: "/"                                    # `package.json` の場所
     schedule:
       interval: "weekly"                                  # チェック頻度を週次に設定
     target-branch: "develop"                              # マージ先のブランチを `develop` に指定
