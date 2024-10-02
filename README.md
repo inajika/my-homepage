@@ -33,7 +33,7 @@
 
 # ローカル開発環境でのアプリ起動コマンド
 ```bash
-$ npm --prefix ./web run dev
+$ npm run dev
 ```
 
 ## アイコン

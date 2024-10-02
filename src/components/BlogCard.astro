@@ -1,23 +1,29 @@
 ---
 interface Props {
   /** ブログ記事ID */
-  entryId: number,
+  entryId: number;
   /** ブログ記事タイトル */
-  entryTitle: string,
+  entryTitle: string;
   /** アイキャッチ */
   eyecatch?: {
     /** アイキャッチ画像ソースURL */
-    src: string,
+    src: string;
     /** アイキャッチ画像代替テキスト */
-    alt: string
-  },
+    alt: string;
+  };
   /** 公開日 */
-  publishedAt: Date,
+  publishedAt: Date;
   /** ロケール */
-  locale?: string,
-};
+  locale?: string;
+}
 
-const { entryId, entryTitle, eyecatch, publishedAt, locale = 'ja-JP' } = Astro.props;
+const {
+  entryId,
+  entryTitle,
+  eyecatch,
+  publishedAt,
+  locale = 'ja-JP',
+} = Astro.props;
 ---
 
 <a href={`/blogs/entries/${entryId}`} class="card image-full card-compact max-md:min-h-40 shadow-md shadow-slate-500 hover:shadow-xl hover:shadow-slate-400 duration-200 bg-base-100">

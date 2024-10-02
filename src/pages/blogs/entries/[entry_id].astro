@@ -11,31 +11,37 @@ export async function getStaticPaths() {
     content_type: 'blog_entries',
   });
 
-  const pages = blogEntries.items.map(item => ({
+  const pages = blogEntries.items.map((item) => ({
     params: {
       /** 記事ID */
-      entry_id: item.fields['entry_id']
+      entry_id: item.fields['entry_id'],
     },
     props: {
       /** 記事タイトル */
       entryTitle: item.fields['entry_title'],
       /** 記事本文 */
-      entryBody: documentToHtmlString(item.fields['entry_body'], renderImageOption),
+      entryBody: documentToHtmlString(
+        item.fields['entry_body'],
+        renderImageOption,
+      ),
       /** アイキャッチ画像 */
       eyecatch: item.fields['eyecatch'] as any,
       /** 記事の概要 */
       description: item.fields['description'],
       /** 公開日(ドラフト版の場合は更新日時) */
-      publishedAt: (item as any).sys['publishedAt'] ? new Date((item as any).sys['publishedAt']) : new Date(item.sys['createdAt']),
+      publishedAt: (item as any).sys['publishedAt']
+        ? new Date((item as any).sys['publishedAt'])
+        : new Date(item.sys['createdAt']),
       /** ロケール */
       locale: item.sys['locale'] ? item.sys['locale'] : 'ja-JP',
     },
   }));
 
   return pages;
-};
+}
 
-const { entryTitle, entryBody, eyecatch, description, publishedAt, locale } = Astro.props;
+const { entryTitle, entryBody, eyecatch, description, publishedAt, locale } =
+  Astro.props;
 ---
 
 <Layout title={entryTitle} desctiption={description}>
