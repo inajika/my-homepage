@@ -15,14 +15,20 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const blogEntries = await contentfulClient.getEntries<BlogEntry>({
     content_type: 'blog_entries',
     order: 'sys.createdAt',
+    // any型にしないと動かない
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   } as any);
 
   const pages = blogEntries.items.map((item) => {
     const { entry_id, entry_title, eyecatch } = item.fields;
-    const publishedAt = (item.sys as any)['publishedAt']
-      ? new Date((item.sys as any)['publishedAt'])
-      : new Date(item.sys['createdAt']);
-    const locale = item.sys['locale'] ? item.sys['locale'] : 'ja-JP';
+    // any型にしないと動かない
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    const publishedAt = (item.sys as any).publishedAt
+      ? // any型にしないと動かない
+        // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+        new Date((item.sys as any).publishedAt)
+      : new Date(item.sys.createdAt);
+    const locale = item.sys.locale ? item.sys.locale : 'ja-JP';
     return {
       entry_id,
       entry_title,
