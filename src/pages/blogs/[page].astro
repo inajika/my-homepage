@@ -19,10 +19,10 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 
   const pages = blogEntries.items.map((item) => {
     const { entry_id, entry_title, eyecatch } = item.fields;
-    const publishedAt = (item.sys as any)['publishedAt']
-      ? new Date((item.sys as any)['publishedAt'])
-      : new Date(item.sys['createdAt']);
-    const locale = item.sys['locale'] ? item.sys['locale'] : 'ja-JP';
+    const publishedAt = (item.sys as any).publishedAt
+      ? new Date((item.sys as any).publishedAt)
+      : new Date(item.sys.createdAt);
+    const locale = item.sys.locale ? item.sys.locale : 'ja-JP';
     return {
       entry_id,
       entry_title,
