@@ -3,8 +3,6 @@ services:
     build:
       context: ..
       dockerfile: ./.devcontainer/docker/web/Dockerfile
-      args:
-        - PASSWORD=${PASSWORD}
     tty: true
     environment:
       - TZ=Asia/Tokyo
