@@ -19,7 +19,6 @@ updates:
     commit-message:
       prefix: "chore"
     rebase-strategy: "auto"
-    versioning-strategy: "increase-if-necessary"                                     # 自動的にバージョンを増加
 
   # for Dockerfile
   - package-ecosystem: "docker"
@@ -33,4 +32,3 @@ updates:
     commit-message:
       prefix: "chore"
     rebase-strategy: "auto"
-    versioning-strategy: "increase-if-necessary"
