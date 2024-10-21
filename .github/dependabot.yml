@@ -1,12 +1,12 @@
 version: 2
 updates:
-  # for Python
+  # for npm dependencies
   - package-ecosystem: "npm"
-    directory: "/"                                    # `package.json` の場所
+    directory: "/"                                                                   # `package.json` の場所
     schedule:
-      interval: "weekly"                                  # チェック頻度を週次に設定
-    target-branch: "develop"                              # マージ先のブランチを `develop` に指定
-    allow:                                                # 依存関係のチェックを許可するパッケージ
+      interval: "weekly"                                                             # チェック頻度を週次に設定
+    target-branch: "develop"                                                         # マージ先のブランチを `develop` に指定
+    allow:                                                                           # 依存関係のチェックを許可するパッケージ
       - dependency-name: "astro"
       - dependency-name: "contentful"
       - dependency-name: "daisyui"
@@ -15,19 +15,45 @@ updates:
       - dependency-name: "@biomejs/biome"
     ignore:
       - dependency-name: "*"
-        update-types: ["version-update:semver-patch"]     # パッチバージョンの更新は無視
+        update-types: ["version-update:semver-major"]                                # メジャーバージョンの更新は週次で無視
     commit-message:
       prefix: "chore"
     rebase-strategy: "auto"
-  # for Dockerfile
-  - package-ecosystem: "docker"
-    directory: "/.devcontainer/docker/web/"                   # `Dockerfile` の場所
+    versioning-strategy: "increase-if-necessary"                                     # 自動的にバージョンを増加
+    # メジャーバージョンは月次でチェック
+  - package-ecosystem: "npm"
+    directory: "/"
     schedule:
-      interval: "weekly"                                  # チェック頻度を週次に設定
-    target-branch: "develop"                              # マージ先のブランチを `develop` に指定
+      interval: "monthly"                                                            # メジャーバージョンの更新は月次に設定
+    target-branch: "develop"
     ignore:
       - dependency-name: "*"
-        update-types: ["version-update:semver-patch"]     # パッチバージョンの更新は無視
+        update-types: ["version-update:semver-minor", "version-update:semver-patch"] # メジャーバージョンのみチェック
+    commit-message:
+      prefix: "chore"
+    rebase-strategy: "auto"
+
+  # for Dockerfile
+  - package-ecosystem: "docker"
+    directory: "/.devcontainer/docker/web/"                                          # `Dockerfile` の場所
+    schedule:
+      interval: "weekly"                                                             # チェック頻度を週次に設定
+    target-branch: "develop"                                                         # マージ先のブランチを `develop` に指定
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]                                # メジャーバージョンの更新は週次で無視
+    commit-message:
+      prefix: "chore"
+    rebase-strategy: "auto"
+    versioning-strategy: "increase-if-necessary"
+  - package-ecosystem: "docker"
+    directory: "/.devcontainer/docker/web/"
+    schedule:
+      interval: "monthly"                                                            # メジャーバージョンの更新は月次に設定
+    target-branch: "develop"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor", "version-update:semver-patch"] # メジャーバージョンのみチェック
     commit-message:
       prefix: "chore"
     rebase-strategy: "auto"
