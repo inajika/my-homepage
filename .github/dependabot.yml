@@ -20,18 +20,6 @@ updates:
       prefix: "chore"
     rebase-strategy: "auto"
     versioning-strategy: "increase-if-necessary"                                     # 自動的にバージョンを増加
-    # メジャーバージョンは月次でチェック
-  - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "monthly"                                                            # メジャーバージョンの更新は月次に設定
-    target-branch: "develop"
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-minor", "version-update:semver-patch"] # メジャーバージョンのみチェック
-    commit-message:
-      prefix: "chore"
-    rebase-strategy: "auto"
 
   # for Dockerfile
   - package-ecosystem: "docker"
@@ -46,14 +34,3 @@ updates:
       prefix: "chore"
     rebase-strategy: "auto"
     versioning-strategy: "increase-if-necessary"
-  - package-ecosystem: "docker"
-    directory: "/.devcontainer/docker/web/"
-    schedule:
-      interval: "monthly"                                                            # メジャーバージョンの更新は月次に設定
-    target-branch: "develop"
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-minor", "version-update:semver-patch"] # メジャーバージョンのみチェック
-    commit-message:
-      prefix: "chore"
-    rebase-strategy: "auto"
