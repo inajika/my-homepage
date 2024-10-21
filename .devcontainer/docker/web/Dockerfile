@@ -1,4 +1,4 @@
-FROM node:22.9.0-slim
+FROM node:23.0.0-slim
 
 # コンテナの日本語化
 ENV LANG=C.UTF-8
