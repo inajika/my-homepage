@@ -13,12 +13,10 @@ updates:
       - dependency-name: "tailwindcss"
       - dependency-name: "typescript"
       - dependency-name: "@biomejs/biome"
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-major"]                                # メジャーバージョンの更新は週次で無視
     commit-message:
       prefix: "chore"
     rebase-strategy: "auto"
+    versioning-strategy: "increase-if-necessary"
 
   # for Dockerfile
   - package-ecosystem: "docker"
