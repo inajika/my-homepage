@@ -31,6 +31,20 @@
     - 本番環境→Content Delivery APIのトークン
     - 開発環境→Content Preview APIのトークン
 
+# ローカル開発環境のNode.jsバージョンアップ
+dependabotによりアップデートのプルリクエストが作成されます。
+Dockerfileを修正するときは`.node-version`も修正してください。
+
+---
+```docker
+FROM node:x.y.z-slim
+```
+となっているとき、`.node-version`は
+```
+x.y.z
+```
+と修正します。
+
 # ローカル開発環境でのアプリ起動コマンド
 ```bash
 $ npm run dev
