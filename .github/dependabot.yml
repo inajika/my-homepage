@@ -13,6 +13,10 @@ updates:
       - dependency-name: "tailwindcss"
       - dependency-name: "typescript"
       - dependency-name: "@biomejs/biome"
+    groups:
+      dependencies:
+        patterns:
+          - '*'
     commit-message:
       prefix: "chore"
     rebase-strategy: "auto"
