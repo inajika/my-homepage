@@ -11,6 +11,8 @@ RUN apt-get -y update \
 
 ARG USERNAME=node
 
+RUN echo "${USERNAME}   ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
 # コンテナを操作するユーザ
 USER ${USERNAME}
 
