@@ -53,3 +53,15 @@ $ npm run dev
 ## アイコン
 - [heroicons](https://github.com/tailwindlabs/heroicons)
 - [Font Awesome](https://fontawesome.com/)
+
+## 自動デプロイをスキップする
+コミットメッセージの**先頭**に
+- `[CI Skip]`
+- `[CI-Skip]`
+- `[Skip CI]`
+- `[Skip-CI]`
+- `[CF-Pages-Skip]`
+
+をつける
+
+[参考](https://developers.cloudflare.com/pages/configuration/git-integration/#skipping-a-specific-build-via-a-commit-message)
