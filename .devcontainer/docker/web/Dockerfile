@@ -6,10 +6,13 @@ ENV LANGUAGE=en_US:
 
 RUN apt-get -y update \
   && apt-get -y upgrade \
-  && apt-get install -y sudo git vim \
+  && apt-get install -y --no-install-recommends ca-certificates sudo git vim \
+  && rm -rf /var/lib/apt/lists/* \
   && npm install -g npm@latest npm-check-updates
 
 ARG USERNAME=node
+
+RUN echo "${USERNAME}   ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # コンテナを操作するユーザ
 USER ${USERNAME}
