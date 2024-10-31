@@ -14,18 +14,18 @@ const { title, desctiption } = Astro.props;
 
 <!doctype html>
 <html lang="ja">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content={desctiption ? desctiption : 'イナジカのホームページです。'} />
-		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
-		<link rel="icon" href="/favicon.ico" />
-		<title>{title ? `${title} - イナジカ.com` : 'イナジカ.com'}</title>
-	</head>
-	<body class="min-h-screen max-w-screen grid grid-rows-[1fr_auto] max-sm:min-h-[240vw]">
-		<main class="px-4 md:px-8 py-2 md:py-4 grid grid-rows-[auto_1fr]">
-			<PageHeader />
-			<slot />
-		</main>
-		<PageFooter />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={desctiption ? desctiption : 'イナジカのホームページです。'} />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>{title ? `${title} - イナジカ.com` : 'イナジカ.com'}</title>
+  </head>
+  <body class="min-h-screen max-w-screen grid grid-rows-[1fr_auto] max-sm:min-h-[240vw]">
+    <main class="px-4 md:px-8 py-2 md:py-4 grid grid-rows-[auto_1fr]">
+      <PageHeader />
+      <slot />
+    </main>
+    <PageFooter />
+  </body>
 </html>
