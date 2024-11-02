@@ -55,13 +55,11 @@ $ npm run dev
 - [Font Awesome](https://fontawesome.com/)
 
 ## 自動デプロイをスキップする
-コミットメッセージの**先頭**に
-- `[CI Skip]`
-- `[CI-Skip]`
-- `[Skip CI]`
-- `[Skip-CI]`
-- `[CF-Pages-Skip]`
+コミットメッセージに以下のいずれかをつける
+- `[skip ci]`
+- `[ci skip]`
+- `[no ci]`
+- `[skip actions]`
+- `[actions skip]`
 
-をつける
-
-[参考](https://developers.cloudflare.com/pages/configuration/git-integration/#skipping-a-specific-build-via-a-commit-message)
+[参考](https://docs.github.com/ja/actions/managing-workflow-runs-and-deployments/managing-workflow-runs/skipping-workflow-runs)
