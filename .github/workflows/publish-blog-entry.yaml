@@ -6,7 +6,7 @@ on:
 
 env:
   TZ: Asia/Tokyo
-  NODE_ENV: development
+  NODE_ENV: production
   CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
   CONTENTFUL_TOKEN: ${{ secrets.CONTENTFUL_TOKEN_PROD }}
 
