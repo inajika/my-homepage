@@ -18,11 +18,9 @@ jobs:
     steps:
       - name: コードのチェックアウト
         uses: actions/checkout@v4
-        with:
-          ref: inajika/my-homepage@develop
 
       - name: Node.jsのセットアップ
-        uses: actions:setup-node@v4
+        uses: actions/setup-node@v4
         with:
           node-version-file: .node-version
 
