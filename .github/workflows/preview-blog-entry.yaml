@@ -1,0 +1,39 @@
+name: ブログ記事のプレビューデプロイ
+
+on:
+  repository_dispatch:
+    types: [preview-blog]
+
+env:
+  TZ: Asia/Tokyo
+  NODE_ENV: development
+  CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+  CONTENTFUL_TOKEN: ${{ secrets.CONTENTFUL_TOKEN_DEV }}
+
+jobs:
+  deploy-dev:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: コードのチェックアウト
+        uses: actions/checkout@v4
+        with:
+          ref: develop # `develop`ブランチをチェックアウト
+
+      - name: Node.jsのセットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+
+      - name: ライブラリのインストール
+        run: npm ci
+
+      - name: ビルド
+        run: npm run build
+
+      - name: デプロイ
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=my-homepage
