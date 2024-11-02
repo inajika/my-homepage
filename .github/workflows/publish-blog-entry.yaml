@@ -1,13 +1,12 @@
-name: 本番環境へのデプロイ
+name: ブログ記事の本番デプロイ
 
 on:
-  push:
-    branches:
-      - master
+  repository_dispatch:
+    types: [publish-blog]
 
 env:
   TZ: Asia/Tokyo
-  NODE_ENV: production
+  NODE_ENV: development
   CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
   CONTENTFUL_TOKEN: ${{ secrets.CONTENTFUL_TOKEN_PROD }}
 
@@ -18,6 +17,7 @@ jobs:
     steps:
       - name: コードのチェックアウト
         uses: actions/checkout@v4
+        # デフォルトブランチをチェックアウト
 
       - name: Node.jsのセットアップ
         uses: actions/setup-node@v4
