@@ -1,0 +1,38 @@
+name: 本番環境へのビルド
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  TZ: Asia/Tokyo
+  NODE_ENV: production
+  CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+  CONTENTFUL_TOKEN: ${{ secrets.CONTENTFUL_TOKEN_PROD }}
+
+jobs:
+  deploy-dev:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: コードのチェックアウト
+        uses: actions/checkout@v4
+
+      - name: Node.jsのセットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+
+      - name: ライブラリのインストール
+        run: npm ci
+
+      - name: ビルド
+        run: npm run build
+
+      - name: デプロイ
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=my-homepage
