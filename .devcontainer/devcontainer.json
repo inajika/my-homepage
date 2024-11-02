@@ -3,12 +3,15 @@
   "dockerComposeFile": "./compose.yaml",
   "service": "astro-web",
   "workspaceFolder": "/service",
-	"postCreateCommand": "npm install",
+	"postCreateCommand": "npm install && (node -v | sed -e 's/^.\\{1\\}//' > .node-version)", // `.node-version`を開発コンテナに合わせて自動更新
   "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && git config --global core.editor vim",
   "customizations": {
     "vscode": {
       "settings": {
         "editor.tabSize": 2,
+        "files.insertFinalNewline": true,
+        "files.trimFinalNewlines": true,
+        "files.trimTrailingWhitespace": true,
         "biome.lspBin": "node_modules/@biomejs/biome/bin/biome",
         "[javascript][javascriptreact][typescript][typescriptreact][astro]": {
           "editor.defaultFormatter": "biomejs.biome",
