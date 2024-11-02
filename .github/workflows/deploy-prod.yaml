@@ -12,7 +12,7 @@ env:
   CONTENTFUL_TOKEN: ${{ secrets.CONTENTFUL_TOKEN_PROD }}
 
 jobs:
-  deploy-dev:
+  deploy-prod:
     runs-on: ubuntu-latest
 
     steps:
