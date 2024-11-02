@@ -19,7 +19,7 @@ jobs:
       - name: コードのチェックアウト
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: inajika/my-homepage@develop
 
       - name: Node.jsのセットアップ
         uses: actions:setup-node@v4
