@@ -16,24 +16,18 @@
   - Cloudflare Pages
 
 ## 環境変数
-`.env.sample`をコピーして`.env`を同じディレクトリに作成します。
+`.devcontainer/.env.sample`をコピーして`.env`を同じディレクトリに作成します。
 
 ```bash
 cp -i .devcontainer/.env.sample .devcontainer/.env
 ```
 
-- `TZ`
-  - タイムゾーン
-- `NODE_ENV`
-  - 実行環境
-    - 本番環境→`production`
-    - 開発環境→`development`
-- `CONTENTFUL_SPACE_ID`
-  - ContentfulのスペースID
-- `CONTENTFUL_TOKEN`
-  - ContentfulのAPIトークン
-    - 本番環境→Content Delivery APIのトークン
-    - 開発環境→Content Preview APIのトークン
+|#|環境変数名|設定するもの|設定例|備考|
+|:---:|----|----|----|----|
+|1|TZ|タイムゾーン|`Asia/Tokyo`||
+|2|NODE_ENV|実行環境種別|`development`|本番環境では`production`<br>開発環境では`development`|
+|3|CONTENTFUL_SPACE_ID|ContentfulのスペースID|(省略)||
+|4|CONTENTFUL_TOKEN|ContentfulのAPIトークン|(省略)|本番環境ではContent Delivery APIのトークン<br>開発環境ではContent Preview APIのトークン|
 
 # ローカル開発環境でのアプリ起動コマンド
 ```bash
