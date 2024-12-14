@@ -18,6 +18,10 @@
 ## 環境変数
 `.env.sample`をコピーして`.env`を同じディレクトリに作成します。
 
+```bash
+cp -i .devcontainer/.env.sample .devcontainer/.env
+```
+
 - `TZ`
   - タイムゾーン
 - `NODE_ENV`
