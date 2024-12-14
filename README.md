@@ -31,7 +31,12 @@ cp -i .devcontainer/.env.sample .devcontainer/.env
 
 ## ローカル開発環境でのアプリ起動コマンド
 ```bash
-$ npm run dev
+npm run dev
+```
+
+## コードチェックをするコマンド
+```bash
+npm run lint
 ```
 
 ## アイコン
