@@ -5,6 +5,8 @@
 - Docker
 - VSCode
   - Dev Containersを利用しています。
+- Git
+  - GitHubにアカウントを作成してください。
 
 ## 技術スタック
 このサイトは、JAMStackで構築しています。
