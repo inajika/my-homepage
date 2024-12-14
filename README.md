@@ -29,7 +29,7 @@ cp -i .devcontainer/.env.sample .devcontainer/.env
 |3|CONTENTFUL_SPACE_ID|ContentfulのスペースID|(省略)||
 |4|CONTENTFUL_TOKEN|ContentfulのAPIトークン|(省略)|本番環境ではContent Delivery APIのトークン<br>開発環境ではContent Preview APIのトークン|
 
-# ローカル開発環境でのアプリ起動コマンド
+## ローカル開発環境でのアプリ起動コマンド
 ```bash
 $ npm run dev
 ```
