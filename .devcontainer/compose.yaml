@@ -5,7 +5,7 @@ services:
       dockerfile: ./.devcontainer/docker/web/Dockerfile
     tty: true
     environment:
-      - TZ=Asia/Tokyo
+      - TZ=${TZ}
       - NODE_ENV=${NODE_ENV}
       - CONTENTFUL_SPACE_ID=${CONTENTFUL_SPACE_ID}
       - CONTENTFUL_TOKEN=${CONTENTFUL_TOKEN}
