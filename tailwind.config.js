@@ -1,10 +1,12 @@
+import daisyui from 'daisyui';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{html,js,jsx,ts,tsx,astro}'],
   theme: {
     extend: {},
   },
-  plugins: [require('daisyui')],
+  plugins: [daisyui],
   // daisyui設定
   daisyui: {
     themes: ['light'],
