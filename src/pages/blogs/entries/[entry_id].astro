@@ -3,7 +3,7 @@ import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 import type { BlogEntry } from '@/lib/contentful';
 import { contentfulClient, renderImageOption } from '@/lib/contentful';
-import Layout from '@/layouts/Layout.astro';
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 
 export async function getStaticPaths() {
@@ -50,9 +50,9 @@ const { entryTitle, entryBody, eyecatch, description, publishedAt, locale } =
   Astro.props;
 ---
 
-<Layout title={entryTitle} desctiption={description}>
+<ArticleLayout title={entryTitle} desctiption={description}>
   <section class=`grid grid-flow-row ${eyecatch ? 'grid-rows-[auto_auto_auto_auto_1fr]' : 'grid-rows-[auto_auto_auto_1fr]'}`>{/* アイキャッチがない場合、DOMの数が一つ少ない */}
-    <Breadcrumbs currentPageName={entryTitle} paths={[{pageName: 'ブログ記事一覧', relativePath: '/blogs/1'}]} />
+    <Breadcrumbs currentPageName={entryTitle} paths={[{pageName: 'ブログ記事一覧', relativePath: '/blogs/1/'}]} />
     {
       eyecatch&&(
         <div class="mb-4">
@@ -75,7 +75,7 @@ const { entryTitle, entryBody, eyecatch, description, publishedAt, locale } =
     </p>
     <article set:html={entryBody} class="blog_entry" />{/* ブログ記事 */}
   </section>
-</Layout>
+</ArticleLayout>
 
 <style is:global>
   /* ブログ記事 */

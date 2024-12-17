@@ -1,0 +1,20 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+/**
+ * ブログページ向けレイアウト
+ */
+
+interface Props {
+  /** ページタイトル(任意) */
+  title?: string;
+  /** ページ説明(任意) */
+  desctiption?: string;
+}
+
+const { title, desctiption } = Astro.props;
+---
+
+<Layout ogType='article' title={title} desctiption={desctiption}>
+  <slot />
+</Layout>

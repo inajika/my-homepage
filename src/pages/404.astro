@@ -1,9 +1,9 @@
 ---
-import Layout from '@/layouts/Layout.astro';
+import WebsiteLayout from '@/layouts/WebsiteLayout.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 ---
 
-<Layout title="お探しのページが見つかりません" desctiption="お探しのページが見つかりません">
+<WebsiteLayout title="お探しのページが見つかりません" desctiption="お探しのページが見つかりません">
   <section class="grid grid-flow-row grid-rows-[auto_1fr]">
     <Breadcrumbs currentPageName="お探しのページが見つかりません" />
     <div class="grid place-items-center">
@@ -15,4 +15,4 @@ import Breadcrumbs from '@/components/Breadcrumbs.astro';
       <a href="/" role="button" class="btn btn-outline btn-wide m-auto">トップページ</a>
     </div>
   </section>
-</Layout>
+</WebsiteLayout>
