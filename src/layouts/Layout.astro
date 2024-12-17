@@ -27,7 +27,7 @@ const { ogType, title, desctiption } = Astro.props;
     <meta property="og:type" content={ogType}>
     <meta property="og:title" content={title ? title : 'イナジカ.com'} />
     <meta property="og:url" content={Astro.url.toString()}>
-    <meta property="og:image" content={MainDeer.src}>
+    <meta property="og:image" content={`${Astro.url.origin}${MainDeer.src}`}>
     <meta property="og:description" content={desctiption ? desctiption : 'イナジカのホームページです。'}>
     <link rel="icon" href="/favicon.ico" />
     <title>{title ? `${title} - イナジカ.com` : 'イナジカ.com'}</title>
