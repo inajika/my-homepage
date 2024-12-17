@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 
-import Layout from '@/layouts/Layout.astro';
+import WebsiteLayout from '@/layouts/WebsiteLayout.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 
 import MainDeer from '@/assets/MainDeer.jpeg';
@@ -10,7 +10,7 @@ import MainDeer from '@/assets/MainDeer.jpeg';
 const TITLE: string = 'About Me';
 ---
 
-<Layout title={TITLE} desctiption='イナジカの自己紹介です。'>
+<WebsiteLayout title={TITLE} desctiption='イナジカの自己紹介です。'>
   <section class="grid grid-flow-row grid-rows-[auto_1fr]">
     <Breadcrumbs currentPageName={TITLE} />
     <div class="grid max-md:grid-rows-2 md:grid-cols-[48%_1fr] md:place-items-center">
@@ -27,4 +27,4 @@ const TITLE: string = 'About Me';
       </div>
     </div>
   </section>
-</Layout>
+</WebsiteLayout>
