@@ -13,6 +13,9 @@ updates:
       - dependency-name: "tailwindcss"
       - dependency-name: "typescript"
       - dependency-name: "@biomejs/biome"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]                                # パッチバージョンの更新を無視
     groups:
       dependencies:
         patterns:
