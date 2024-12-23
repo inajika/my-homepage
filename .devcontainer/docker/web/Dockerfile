@@ -23,4 +23,7 @@ ENV HOME=/home/${USERNAME}
 ARG PROJECT_ROOT=/service
 WORKDIR ${PROJECT_ROOT}
 
+# Astro用
 EXPOSE 4321
+# Playwright用
+EXPOSE 9323
