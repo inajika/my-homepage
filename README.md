@@ -41,6 +41,13 @@ npm run dev
 npm run lint
 ```
 
+## E2Eテストをするコマンド
+まずはビルドをしてからE2Eテストを実施します。
+```bash
+npm run build
+npm run e2e
+```
+
 ## アイコン
 - [heroicons](https://github.com/tailwindlabs/heroicons)
 - [Font Awesome](https://fontawesome.com/)
