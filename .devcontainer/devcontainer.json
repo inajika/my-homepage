@@ -3,7 +3,7 @@
   "dockerComposeFile": "./compose.yaml",
   "service": "astro-web",
   "workspaceFolder": "/service",
-  "postCreateCommand": "npm install && (node -v | sed 's/^.\\{1\\}//' > .node-version)", // `.node-version`を開発コンテナに合わせて自動更新
+  "postCreateCommand": "npm install && npx playwright install --with-deps && (node -v | sed 's/^.\\{1\\}//' > .node-version)", // `.node-version`を開発コンテナに合わせて自動更新
   "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && git config --global core.editor vim",
   "customizations": {
     "vscode": {

@@ -138,3 +138,9 @@ dist
 
 # jetbrains setting folder
 .idea/
+
+# for Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
