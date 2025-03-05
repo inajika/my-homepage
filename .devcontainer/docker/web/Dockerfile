@@ -1,8 +1,8 @@
 FROM node:22.12-slim
 
-# コンテナの日本語化
+ENV TZ=Asia/Tokyo
+ENV NODE_ENV=development
 ENV LANG=C.UTF-8
-ENV LANGUAGE=en_US:
 
 RUN apt-get -y update \
   && apt-get -y upgrade \
@@ -10,17 +10,15 @@ RUN apt-get -y update \
   && rm -rf /var/lib/apt/lists/* \
   && npm install -g npm@latest npm-check-updates
 
+# コンテナを操作する非rootユーザ
 ARG USERNAME=node
-
 RUN echo "${USERNAME}   ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-
-# コンテナを操作するユーザ
 USER ${USERNAME}
 
 # ホームディレクトリを明示的に定義
 ENV HOME=/home/${USERNAME}
 
-ARG PROJECT_ROOT=/service
+ARG PROJECT_ROOT=/service/web/my-homepage
 WORKDIR ${PROJECT_ROOT}
 
 # Astro用

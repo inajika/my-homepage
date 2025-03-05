@@ -26,10 +26,9 @@ cp -i .devcontainer/.env.sample .devcontainer/.env
 
 |#|環境変数名|設定するもの|設定例|備考|
 |:---:|----|----|----|----|
-|1|TZ|タイムゾーン|`Asia/Tokyo`||
-|2|NODE_ENV|実行環境種別|`development`|本番環境では`production`<br>開発環境では`development`|
-|3|CONTENTFUL_SPACE_ID|ContentfulのスペースID|(省略)||
-|4|CONTENTFUL_TOKEN|ContentfulのAPIトークン|(省略)|本番環境ではContent Delivery APIのトークン<br>開発環境ではContent Preview APIのトークン|
+|1|NODE_ENV|実行環境種別|`development`|本番環境では`production`<br>開発環境では`development`<br>開発コンテナは`development`固定です|
+|2|CONTENTFUL_SPACE_ID|ContentfulのスペースID|(省略)||
+|3|CONTENTFUL_TOKEN|ContentfulのAPIトークン|(省略)|本番環境ではContent Delivery APIのトークン<br>開発環境ではContent Preview APIのトークン|
 
 ## ローカル開発環境でのアプリ起動コマンド
 ```bash
