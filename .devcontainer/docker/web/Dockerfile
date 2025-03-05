@@ -10,11 +10,9 @@ RUN apt-get -y update \
   && rm -rf /var/lib/apt/lists/* \
   && npm install -g npm@latest npm-check-updates
 
+# コンテナを操作する非rootユーザ
 ARG USERNAME=node
-
 RUN echo "${USERNAME}   ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-
-# コンテナを操作するユーザ
 USER ${USERNAME}
 
 # ホームディレクトリを明示的に定義
