@@ -2,7 +2,6 @@ FROM node:22.12-slim
 
 ENV TZ=Asia/Tokyo
 ENV NODE_ENV=development
-# コンテナの日本語化
 ENV LANG=C.UTF-8
 
 RUN apt-get -y update \
