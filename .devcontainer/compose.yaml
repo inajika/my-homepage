@@ -12,4 +12,4 @@ services:
     ports:
       - 4321:4321
     volumes:
-      - ../:/service
+      - ../:/service/web/my-homepage

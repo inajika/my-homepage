@@ -20,7 +20,7 @@ USER ${USERNAME}
 # ホームディレクトリを明示的に定義
 ENV HOME=/home/${USERNAME}
 
-ARG PROJECT_ROOT=/service
+ARG PROJECT_ROOT=/service/web/my-homepage
 WORKDIR ${PROJECT_ROOT}
 
 # Astro用
