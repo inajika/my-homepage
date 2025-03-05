@@ -1,5 +1,7 @@
 FROM node:22.12-slim
 
+ENV TZ=Asia/Tokyo
+
 # コンテナの日本語化
 ENV LANG=C.UTF-8
 
