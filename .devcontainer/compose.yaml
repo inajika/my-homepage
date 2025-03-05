@@ -1,8 +1,8 @@
 services:
   astro-web:
     build:
-      context: ..
-      dockerfile: ./.devcontainer/docker/web/Dockerfile
+      context: .
+      dockerfile: docker/web/Dockerfile
     tty: true
     environment:
       - TZ=${TZ}
