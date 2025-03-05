@@ -5,7 +5,6 @@ services:
       dockerfile: docker/web/Dockerfile
     tty: true
     environment:
-      - NODE_ENV=${NODE_ENV}
       - CONTENTFUL_SPACE_ID=${CONTENTFUL_SPACE_ID}
       - CONTENTFUL_TOKEN=${CONTENTFUL_TOKEN}
     ports:
