@@ -2,7 +2,6 @@ FROM node:22.12-slim
 
 # コンテナの日本語化
 ENV LANG=C.UTF-8
-ENV LANGUAGE=en_US:
 
 RUN apt-get -y update \
   && apt-get -y upgrade \
