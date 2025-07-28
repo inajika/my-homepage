@@ -25,17 +25,14 @@ export async function getStaticPaths() {
         renderImageOption,
       ),
       /** アイキャッチ画像 */
-      // any型にしないと動かない
-      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+      // biome-ignore lint/suspicious/noExplicitAny: any型にしないと動かない
       eyecatch: item.fields.eyecatch as any,
       /** 記事の概要 */
       description: item.fields.description,
       /** 公開日(ドラフト版の場合は更新日時) */
-      // any型にしないと動かない
-      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+      // biome-ignore lint/suspicious/noExplicitAny: any型にしないと動かない
       publishedAt: (item as any).sys.publishedAt
-        ? // any型にしないと動かない
-          // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+        ? // biome-ignore lint/suspicious/noExplicitAny: any型にしないと動かない
           new Date((item as any).sys.publishedAt)
         : new Date(item.sys.createdAt),
       /** ロケール */
