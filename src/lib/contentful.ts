@@ -44,8 +44,7 @@ export interface BlogEntry {
  */
 export const renderImageOption = {
   renderNode: {
-    // any型にしないと動かない
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    // biome-ignore lint/suspicious/noExplicitAny: any型にしないと動かない
     'embedded-asset-block': (node: any) =>
       `<img src="${node.data.target.fields.file.url}" alt="${
         node.data.target.fields.description
