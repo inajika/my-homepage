@@ -1,4 +1,4 @@
-FROM node:22.12-slim
+FROM node:22.18-slim
 
 ENV TZ=Asia/Tokyo
 ENV NODE_ENV=development
