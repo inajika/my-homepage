@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - develop # `develop`ブランチにプッシュされたとき
+      - feature/#162_migrate-to-cloudflare-workers
 
 env:
   TZ: Asia/Tokyo
@@ -35,4 +36,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=my-homepage
+          command: deploy dist --project-name=my-homepage
