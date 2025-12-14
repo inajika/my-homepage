@@ -3,7 +3,7 @@ name: 開発環境へのデプロイ
 on:
   push:
     branches:
-      - develop # `develop`ブランチにプッシュされたとき
+      # - develop # `develop`ブランチにプッシュされたとき
       - feature/#162_migrate-to-cloudflare-workers
 
 env:
