@@ -14,7 +14,7 @@ export async function getStaticPaths() {
   const pages = blogEntries.items.map((item) => ({
     params: {
       /** 記事ID */
-      entry_id: item.fields.entry_id,
+      entry_id: String(item.fields.entry_id),
     },
     props: {
       /** 記事タイトル */
