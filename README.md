@@ -15,7 +15,7 @@
 - 静的サイトジェネレータ
   - Astro (TypeScript)
 - ホスティング
-  - Cloudflare Pages
+  - Cloudflare Workers
 
 ## 環境変数
 `.devcontainer/.env.sample`をコピーして`.env`を同じディレクトリに作成します。
