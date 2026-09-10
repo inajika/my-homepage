@@ -7,8 +7,7 @@ ENV LANG=C.UTF-8
 RUN apt-get -y update \
   && apt-get -y upgrade \
   && apt-get install -y --no-install-recommends ca-certificates sudo git vim \
-  && rm -rf /var/lib/apt/lists/* \
-  && npm install -g npm@latest npm-check-updates
+  && rm -rf /var/lib/apt/lists/*
 
 # コンテナを操作する非rootユーザ
 ARG USERNAME=node

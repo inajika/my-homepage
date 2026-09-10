@@ -3,8 +3,16 @@
   "dockerComposeFile": "./compose.yaml",
   "service": "astro-web",
   "workspaceFolder": "/service/web/my-homepage",
-  "postCreateCommand": "npm install && npx playwright install --with-deps && (node -v | sed 's/^.\\{1\\}//' > .node-version)", // `.node-version`を開発コンテナに合わせて自動更新
+  // claude-code feature が root でインストールされる際に /home/node/.npm へ root 所有のファイルを作ってしまうため、npm install 前に所有権を戻す
+  "postCreateCommand": "sudo chown -R 1000:1000 /home/node/.npm 2>/dev/null; npm install && npx playwright install --with-deps && (node -v | sed 's/^.\\{1\\}//' > .node-version)", // `.node-version`を開発コンテナに合わせて自動更新
   "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && git config --global core.editor vim",
+  "features": {
+    "ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {}
+  },
+  "mounts": [
+    "source=${localEnv:HOME}/.claude,target=/home/node/.claude,type=bind"
+  ],
+  "remoteUser": "node",
   "customizations": {
     "vscode": {
       "settings": {
@@ -29,7 +37,8 @@
         "biomejs.biome",
         "mhutchie.git-graph",
         "ms-azuretools.vscode-docker",
-        "GitHub.vscode-pull-request-github"
+        "GitHub.vscode-pull-request-github",
+        "Anthropic.claude-code"
       ]
     }
   }
