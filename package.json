@@ -1,7 +1,7 @@
 {
   "name": "inajika.com",
   "type": "module",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "scripts": {
     "dev": "astro dev --host 0.0.0.0",
     "start": "astro dev --host 0.0.0.0",
